@@ -1,11 +1,12 @@
 var timeLimit = 'December 31 2016 23:59:59 GMT+02:00';
 
-function timeLeft(time){
+//time
+function timeLeft(time) {
   var timeDifference = Date.parse(time) - Date.parse(new Date());
-  var day = Math.floor(timeDifference/(1000*60*60*24));
-  var hour = Math.floor((timeDifference/(1000*60*60)) % 24);
-  var minute = Math.floor((timeDifference/1000/60) % 60);
-  var second = Math.floor((timeDifference/1000) % 60);
+  var day = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  var hour = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+  var minute = Math.floor((timeDifference / 1000 / 60) % 60);
+  var second = Math.floor((timeDifference / 1000) % 60);
   return {
     'total': timeDifference,
     'days': day,
@@ -16,34 +17,34 @@ function timeLeft(time){
 }
 timeLeft(timeLimit);
 
-
-function clockInit(id, time){
-  var clock = document.getElementById('countdown');
-  var daysSpan = clock.querySelector('.days');
-  var hoursSpan = clock.querySelector('.hours');
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
-  
-  function clockUpdate(){
+//countdown
+function clockInit(el, time){
+  function updateClock(){
     var timeDifference = timeLeft(time);
-    daysSpan.innerHTML = timeDifference.days;
-//    $(".days").text(timeDifference.days);
-    hoursSpan.innerHTML = ('0' + timeDifference.hours).slice(-2);
-//    var test = $(".hours").text(timeDifference.hours);
-    minutesSpan.innerHTML = ('0' + timeDifference.minutes).slice(-2);
-//    $(".minutes").text(timeDifference.minutes);
-    secondsSpan.innerHTML = ('0' + timeDifference.seconds).slice(-2);
-//    $(".seconds").text(timeDifference.seconds);
-    if(timeDifference.total <= 0){
+
+    $('.days').text(timeDifference.days);
+    
+    var h = $('.hours').text(timeDifference.hours);
+    if(h.text().length <= 1) {
+      h.text('0' + timeDifference.hours)
+    }   
+    
+    var m = $('.minutes').text(timeDifference.minutes);
+    if(m.text().length <= 1) {
+      m.text('0' + timeDifference.minutes)
+    }   
+    
+    var s = $('.seconds').text(timeDifference.seconds);
+    if(s.text().length <= 1) {
+      s.text('0' + timeDifference.seconds)
+    }    
+    
+    if(timeDifference.total<=0){
       alert('Happy New Year!');
       clearInterval(timeinterval);
     }
   }
-
-  clockUpdate();
-  var timeinterval = setInterval(clockUpdate,1000);
+  updateClock();
+  var timeinterval = setInterval(updateClock,1000);
 }
-
 clockInit('countdown', timeLimit);
-
-
