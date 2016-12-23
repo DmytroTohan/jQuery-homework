@@ -38,6 +38,7 @@ body {
   width: 100px;
   font-size: 80px;
   padding-top: 20px;
+  margin-right: 5px;
 }
 
 .footer {
@@ -48,5 +49,5 @@ body {
 
 .dayInfo, .hourInfo, .minuteInfo, .secondInfo {
   display: inline-block;
-  width: 100px;
+  width: 105px;
 }
