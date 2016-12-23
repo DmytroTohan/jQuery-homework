@@ -18,8 +18,8 @@ function timeLeft(time) {
 timeLeft(timeLimit);
 
 //countdown
-function clockInit(el, time){
-  function updateClock(){
+function clockInit(el, time) {
+  function updateClock() {
     var timeDifference = timeLeft(time);
 
     $('.days').text(timeDifference.days);
@@ -39,7 +39,7 @@ function clockInit(el, time){
       s.text('0' + timeDifference.seconds)
     }    
     
-    if(timeDifference.total<=0){
+    if(timeDifference.total <= 0) {
       alert('Happy New Year!');
       clearInterval(timeinterval);
     }
