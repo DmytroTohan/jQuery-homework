@@ -1,2 +1,1 @@
-$('.truncate').trunc(20);
-$('#trunc').trunc(50);
+$('.truncated').trunc(100);
