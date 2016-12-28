@@ -1,0 +1,1 @@
+$('.truncated').trunc(100);
