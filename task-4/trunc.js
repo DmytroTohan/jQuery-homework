@@ -16,8 +16,3 @@ $.fn.trunc = function(max) {
     $(this).parent().text(msg.substr(0, max)).append('<span class="more">...</span>');
   });
 };
-
-//$('.truncated').trunc(20);
-//$('p').trunc(20);
-//$('div #trun').trunc(30);
-//$('#trunc').trunc(50);
